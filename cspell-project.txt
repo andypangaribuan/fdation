@@ -1,0 +1,4 @@
+# Dictionary for special name on this project
+fdation
+omitempty
+dictio
