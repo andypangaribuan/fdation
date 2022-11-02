@@ -11,3 +11,22 @@ extension NExtMap<K, V> on Map<K, V>? {
 
   bool get isNotEmpty => !isEmpty;
 }
+
+extension ExtMapStrKey<T> on Map<String, T> {
+  T? get(String key, {bool ignoreCase = false}) {
+    var val = this[key];
+    if (!ignoreCase || containsKey(key)) {
+      return val;
+    }
+
+    key = key.toLowerCase();
+    for (final e in entries) {
+      if (key == e.key.toLowerCase()) {
+        val = e.value;
+        break;
+      }
+    }
+
+    return val;
+  }
+}

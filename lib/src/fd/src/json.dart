@@ -35,12 +35,12 @@ class _Json {
     }
 
     if (obj is Map) {
-      final dictio = <dynamic, dynamic>{};
+      final dict = <dynamic, dynamic>{};
       for (final kv in obj.entries) {
-        dictio[kv.key] = convert(kv.value);
+        dict[kv.key] = convert(kv.value);
       }
 
-      return dictio;
+      return dict;
     }
 
     return serialize(obj, trimDoubleQuotes: trimDoubleQuotes);

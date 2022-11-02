@@ -9,7 +9,7 @@
 import 'package:meta/meta.dart';
 
 abstract class FJsonSerializable {
-  // supported value: string, int, double, bool
+  // supported value: string, int, double, bool, datetime
   Map<String, dynamic> serialize();
 
   @protected
