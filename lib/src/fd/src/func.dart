@@ -6,10 +6,11 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
-part of fd;
+part of fd_maker;
 
 class _IsInstanceTypeOf<T> {}
 
-class _Func {
+class _Func implements FDFunc {
+  @override
   bool isTypeOf<ThisType, OfType>() => _IsInstanceTypeOf<ThisType>() is _IsInstanceTypeOf<OfType>;
 }

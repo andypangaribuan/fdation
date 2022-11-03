@@ -6,11 +6,12 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
-part of fd;
+part of fd_maker;
 
-class _Env {
+class _Env implements FDEnv {
   final _values = <String, String>{};
 
+  @override
   Future<void> load(List<String> args) async {
     var filePath = '';
 
@@ -28,7 +29,7 @@ class _Env {
         if (line.isEmpty || line.substring(0, 1) == '#') {
           continue;
         }
-        
+
         final idx = line.indexOf("=");
         if (idx > 0) {
           final key = line.substring(0, idx);
@@ -39,6 +40,7 @@ class _Env {
     }
   }
 
+  @override
   T? get<T>(String key, {T? defaultValue}) {
     final val = _values[key] ?? Platform.environment[key];
     if (val.isEmpty) {

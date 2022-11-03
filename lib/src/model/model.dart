@@ -6,4 +6,5 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
-export 'src/async.dart';
+export 'src/error_model.dart';
+export 'src/net_model.dart';

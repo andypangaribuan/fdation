@@ -17,7 +17,7 @@ void main() async {
     newInstance: () => DB(pool)..lifetime = Duration(seconds: 30),
     maxConcurrent: 0,
     maxIdle: 2,
-    maxOpen: 1,
+    maxOpen: 4,
     openLifetime: Duration(seconds: 5),
   );
 

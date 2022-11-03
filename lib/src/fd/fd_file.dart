@@ -6,4 +6,6 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
-export 'src/async.dart';
+abstract class FDFile {
+  Future<List<String>> read({required String path});
+}

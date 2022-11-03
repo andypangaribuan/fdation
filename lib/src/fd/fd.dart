@@ -6,25 +6,20 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
-library fd;
+import 'package:fdation/maker/fd_maker.dart';
 
-import 'dart:convert';
-import 'dart:io';
+import 'fd_convert.dart';
+import 'fd_env.dart';
+import 'fd_file.dart';
+import 'fd_func.dart';
+import 'fd_json.dart';
 
-import 'package:fdation/fdation.dart';
+final fd = makeFD();
 
-part 'src/convert.dart';
-part 'src/env.dart';
-part 'src/file.dart';
-part 'src/func.dart';
-part 'src/json.dart';
-
-final fd = _FD();
-
-class _FD {
-  final convert = _Convert();
-  final env = _Env();
-  final file = _File();
-  final func = _Func();
-  final json = _Json();
+abstract class FD {
+  FDConvert get convert;
+  FDEnv get env;
+  FDFile get file;
+  FDFunc get func;
+  FDJson get json;
 }

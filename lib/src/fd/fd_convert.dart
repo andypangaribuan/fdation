@@ -6,4 +6,6 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
-export 'src/async.dart';
+abstract class FDConvert {
+  T? to<T>(dynamic val, {T? defaultValue});
+}

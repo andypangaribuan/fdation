@@ -23,7 +23,7 @@ void main() {
     });
 
     test('length', () {
-      expect(lines.length, 4);
+      expect(lines.length, 5);
     });
   });
 }

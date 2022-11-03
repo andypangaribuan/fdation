@@ -11,9 +11,10 @@ library fdation;
 export 'src/extension/extension.dart';
 export 'src/fd/fd.dart';
 export 'src/global/global.dart';
-export 'src/model/error_model.dart';
+export 'src/model/model.dart';
+export 'src/net/net.dart';
 export 'src/pool/pool.dart';
 
-export 'src/alias.dart';
-export 'src/json_serializable.dart';
-export 'src/time.dart';
+export 'src/mix/alias.dart';
+export 'src/mix/json_serializable.dart';
+export 'src/mix/time.dart';

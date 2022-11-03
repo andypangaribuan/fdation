@@ -6,9 +6,10 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
-part of fd;
+part of fd_maker;
 
-class _File {
+class _File implements FDFile {
+  @override
   Future<List<String>> read({required String path}) {
     final f = File(path);
     return f.readAsLines();

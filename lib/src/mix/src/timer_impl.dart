@@ -6,21 +6,27 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
-import 'dart:async' show Timer, Zone;
+part of mix_timer;
 
-import 'package:clock/clock.dart' show clock;
-
-class FTimer implements Timer {
+class _FTimerImpl implements FTimer {
   final Zone _zone;
   Stopwatch? _stopwatch = clock.stopwatch();
   Timer? _timer;
   int _tick = 0;
 
+  @override
   void Function() callback;
+
+  @override
   Duration duration;
 
+  @override
   Duration get elapsed => _stopwatch?.elapsed ?? duration;
+
+  @override
   bool get isPaused => _timer == null && !isExpired;
+
+  @override
   bool get isExpired => _stopwatch == null;
 
   @override
@@ -29,10 +35,11 @@ class FTimer implements Timer {
   @override
   int get tick => _tick;
 
-  FTimer(this.duration, this.callback)
+  _FTimerImpl(this.duration, this.callback)
       : assert(duration >= Duration.zero),
         _zone = Zone.current;
 
+  @override
   void start() {
     if (isActive || isExpired) {
       return;
@@ -41,12 +48,14 @@ class FTimer implements Timer {
     _startTimer();
   }
 
+  @override
   void pause() {
     _stopwatch?.stop();
     _timer?.cancel();
     _timer = null;
   }
 
+  @override
   void reset() {
     _stopwatch = clock.stopwatch();
 
@@ -56,6 +65,7 @@ class FTimer implements Timer {
     }
   }
 
+  @override
   void resetAndStart() {
     _stopwatch = clock.stopwatch();
 

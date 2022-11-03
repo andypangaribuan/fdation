@@ -6,9 +6,10 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
-part of fd;
+part of fd_maker;
 
-class _Json {
+class _Json implements FDJson {
+  @override
   dynamic convert(Object? obj, {bool trimDoubleQuotes = false, String? fieldName, FJsonSerializable? jsonSerializable}) {
     if (obj == null) {
       return obj;
@@ -17,7 +18,7 @@ class _Json {
     if (obj is String || obj is int || obj is double || obj is bool) {
       return obj;
     }
-    
+
     if (obj is DateTime) {
       return obj.toIso8601String();
     }
@@ -46,6 +47,7 @@ class _Json {
     return serialize(obj, trimDoubleQuotes: trimDoubleQuotes);
   }
 
+  @override
   String serialize(Object? obj, {bool trimDoubleQuotes = false}) {
     var encoded = json.encode(obj, toEncodable: (o) {
       if (o is FJsonSerializable) {

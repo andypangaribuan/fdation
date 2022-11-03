@@ -6,9 +6,10 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
-part of fd;
+part of fd_maker;
 
-class _Convert {
+class _Convert implements FDConvert {
+  @override
   T? to<T>(dynamic val, {T? defaultValue}) {
     if (val == null) {
       return defaultValue;

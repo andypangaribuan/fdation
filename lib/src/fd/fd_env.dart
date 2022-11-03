@@ -6,4 +6,8 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
-export 'src/async.dart';
+abstract class FDEnv {
+  Future<void> load(List<String> args);
+
+  T? get<T>(String key, {T? defaultValue});
+}
