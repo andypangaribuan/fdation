@@ -1,6 +1,10 @@
 # CHANGELOG
 All notable changes to this project will be documented in this file.
 
+## 1.0.4
+### Added
+* whenUnknown and isUnknown on NetResponse when network error occurs.
+
 ## 1.0.3
 ### Added
 * callback when on net response for 2xx and 4xx http status code.

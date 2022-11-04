@@ -40,6 +40,9 @@ abstract class NetResponse {
   // http-code 451 Unavailable For Legal Reasons
   bool get isUnavailableForLegalReasons;
 
+  // http-code 0
+  bool get isUnknown;
+
   Future<R?> whenOK<T, R>(Future<R> Function(T response) callback);
   Future<R?> whenCreated<T, R>(Future<R> Function(T response) callback);
   Future<R?> whenAccepted<T, R>(Future<R> Function(T response) callback);
@@ -51,4 +54,6 @@ abstract class NetResponse {
   Future<R?> whenNotAcceptable<T, R>(NetResponseWhenCallback<T, R> callback);
   Future<R?> whenPreconditionRequired<T, R>(NetResponseWhenCallback<T, R> callback);
   Future<R?> whenUnavailableForLegalReasons<T, R>(NetResponseWhenCallback<T, R> callback);
+
+  Future<R?> whenUnknown<R>(Future<R> Function(Object err, StackTrace stackTrace) callback);
 }

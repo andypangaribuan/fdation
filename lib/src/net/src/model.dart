@@ -75,6 +75,9 @@ class _NetResponse implements NetResponse {
   bool get isUnavailableForLegalReasons => statusCode == 451;
 
   @override
+  bool get isUnknown => statusCode == 0;
+
+  @override
   Future<R?> whenOK<T, R>(Future<R> Function(T response) callback) async {
     return isOK ? callback(data) : null;
   }
@@ -122,5 +125,10 @@ class _NetResponse implements NetResponse {
   @override
   Future<R?> whenUnavailableForLegalReasons<T, R>(NetResponseWhenCallback<T, R> callback) async {
     return isUnavailableForLegalReasons ? callback(data, error!, stackTrace!) : null;
+  }
+
+  @override
+  Future<R?> whenUnknown<R>(Future<R> Function(Object err, StackTrace stackTrace) callback) async {
+    return isUnknown ? callback(error!, stackTrace!) : null;
   }
 }
