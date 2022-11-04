@@ -9,6 +9,7 @@
 library net_maker;
 
 import 'package:dio/dio.dart';
+import 'package:fdation/src/global/alias.dart';
 import 'package:fdation/src/model/model.dart';
 import 'package:fdation/src/net/net.dart';
 

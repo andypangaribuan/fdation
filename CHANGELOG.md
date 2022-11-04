@@ -1,6 +1,10 @@
 # CHANGELOG
 All notable changes to this project will be documented in this file.
 
+## 1.0.3
+### Added
+* callback when on net response for 2xx and 4xx http status code.
+
 ## 1.0.2
 ### Changed
 * do abstraction for all code

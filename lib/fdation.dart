@@ -10,6 +10,7 @@ library fdation;
 
 export 'src/extension/extension.dart';
 export 'src/fd/fd.dart';
+export 'src/global/alias.dart';
 export 'src/global/global.dart';
 export 'src/model/model.dart';
 export 'src/net/net.dart';
