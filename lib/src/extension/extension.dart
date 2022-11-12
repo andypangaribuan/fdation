@@ -6,6 +6,7 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
+export 'src/ext_datetime.dart';
 export 'src/ext_list.dart';
 export 'src/ext_map.dart';
 export 'src/ext_object.dart';

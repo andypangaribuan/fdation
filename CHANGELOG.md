@@ -1,6 +1,14 @@
 # CHANGELOG
 All notable changes to this project will be documented in this file.
 
+## 1.0.5
+### Added
+* DateTime extension
+* fd.convert string2DateTime and dateTime2String
+* groupWait2 to handle double future await
+### Updated
+* env get with single quote and double quote
+
 ## 1.0.4
 ### Added
 * whenUnknown and isUnknown on NetResponse when network error occurs.

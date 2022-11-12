@@ -24,7 +24,13 @@ extension ExtList<T> on List<T> {
     for (T e in this) {
       ls.add(action(e));
     }
-    
+
     return ls;
+  }
+
+  void loop(void Function(T item, int idx) action) {
+    for (int i = 0; i < length; i++) {
+      action(this[i], i);
+    }
   }
 }

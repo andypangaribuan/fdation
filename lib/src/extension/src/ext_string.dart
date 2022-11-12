@@ -6,6 +6,8 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
+import 'package:fdation/fdation.dart';
+
 extension ExtString on String {
   int? toInt({int? defaultValue}) => int.tryParse(this) ?? defaultValue;
 
@@ -24,6 +26,31 @@ extension ExtString on String {
       default:
         return defaultValue;
     }
+  }
+
+  Iterable<String> get iterable sync* {
+    for (var i = 0; i < length; i++) {
+      yield this[i];
+    }
+  }
+
+  Iterable<MapEntry<int, String>> get entries sync* {
+    for (var i = 0; i < length; i++) {
+      yield MapEntry(i, this[i]);
+    }
+  }
+
+  bool get hasInt {
+    for (final c in iterable) {
+      if (int.tryParse(c) != null) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  DateTime? toDateTime({String? format}) {
+    return fd.convert.string2DateTime(this, format: format);
   }
 }
 

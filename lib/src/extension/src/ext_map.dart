@@ -6,6 +6,19 @@
  * licenses restricting copying, distribution and decompilation.
  */
 
+extension ExtMap<K, V> on Map<K, V> {
+  void loop(void Function(K key, V val) action) {
+    for (final e in entries) {
+      action(e.key, e.value);
+    }
+  }
+
+  Map<K, V> add(K key, V value) {
+    this[key] = value;
+    return this;
+  }
+}
+
 extension NExtMap<K, V> on Map<K, V>? {
   bool get isEmpty => this?.isEmpty ?? true;
 

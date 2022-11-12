@@ -21,6 +21,14 @@ void main() {
       expect(fd.env.get<String>('APP_NAME'), 'fdation2');
     });
 
+    test('string value with single quotes', () {
+      expect(fd.env.get<String>('APP_INFO'), 'Dart Foundation');
+    });
+
+    test('string value with double quotes', () {
+      expect(fd.env.get<String>('APP_DESC'), 'Base foundation for all dart/flutter application');
+    });
+
     test('int value', () {
       expect(fd.env.get<int>('APP_PORT'), 8080);
     });

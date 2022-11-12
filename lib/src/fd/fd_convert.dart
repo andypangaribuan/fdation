@@ -8,4 +8,7 @@
 
 abstract class FDConvert {
   T? to<T>(dynamic val, {T? defaultValue});
+
+  DateTime? string2DateTime(String value, {String? format});
+  String? dateTime2String(DateTime value, {String? format});
 }
