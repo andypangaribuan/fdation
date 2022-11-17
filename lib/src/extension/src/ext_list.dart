@@ -9,6 +9,10 @@
 extension ExtList<T> on List<T> {
   Iterable<MapEntry<int, T>> get entries => asMap().entries;
 
+  T? get safeFirst {
+    return isEmpty ? null : this[0];
+  }
+
   T? safeFirstWhere(bool Function(T e) condition, {T Function()? orElse}) {
     for (T e in this) {
       if (condition(e)) {
