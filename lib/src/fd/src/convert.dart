@@ -103,6 +103,36 @@ class _Convert implements FDConvert {
   String? dateTime2String(DateTime value, {String? format}) {
     return _dateTimeConverter.toStr(value, format: format);
   }
+
+  @override
+  String toRFC3339(DateTime value) {
+    return _dateTimeConverter.toRFC3339(value);
+  }
+
+  @override
+  String toRFC3339MilliSecond(DateTime value) {
+    return _dateTimeConverter.toRFC3339MilliSecond(value);
+  }
+
+  @override
+  String toRFC3339MicroSecond(DateTime value) {
+    return _dateTimeConverter.toRFC3339MicroSecond(value);
+  }
+
+  @override
+  String? safeToRFC3339(DateTime? value) {
+    return value == null ? null : toRFC3339(value);
+  }
+
+  @override
+  String? safeToRFC3339MilliSecond(DateTime? value) {
+    return value == null ? null : toRFC3339MilliSecond(value);
+  }
+
+  @override
+  String? safeToRFC3339MicroSecond(DateTime? value) {
+    return value == null ? null : toRFC3339MicroSecond(value);
+  }
 }
 
 class _DateTimeConverter {
@@ -120,6 +150,21 @@ class _DateTimeConverter {
     final sp = _DateTimeSplitter.fromDateTime(dt);
     return format == null ? sp.iso8601 : sp.strFormat(format);
   }
+
+  String toRFC3339(DateTime value) {
+    final sp = _DateTimeSplitter.fromDateTime(value);
+    return '${sp.year}-${sp.month}-${sp.day}T${sp.hour}:${sp.minute}:${sp.second}${sp.timeZone}';
+  }
+
+  String toRFC3339MilliSecond(DateTime value) {
+    final sp = _DateTimeSplitter.fromDateTime(value);
+    return '${sp.year}-${sp.month}-${sp.day}T${sp.hour}:${sp.minute}:${sp.second}.${sp.milliSecond}${sp.timeZone}';
+  }
+
+  String toRFC3339MicroSecond(DateTime value) {
+    final sp = _DateTimeSplitter.fromDateTime(value);
+    return '${sp.year}-${sp.month}-${sp.day}T${sp.hour}:${sp.minute}:${sp.second}.${sp.microSecond}${sp.timeZone}';
+  }
 }
 
 class _DateTimeSplitter {
@@ -130,7 +175,9 @@ class _DateTimeSplitter {
   String hour = '00';
   String minute = '00';
   String second = '00';
+  String milliSecond = '000';
   String microSecond = '000000';
+  String timeZone = '+00:00';
 
   _DateTimeSplitter();
 
@@ -138,22 +185,21 @@ class _DateTimeSplitter {
     final sp = _DateTimeSplitter();
     sp.iso8601 = dt.toIso8601String();
 
-    final dts = sp.iso8601;
-    var arr = dts.split('T');
+    sp.year = dt.year.toString();
+    sp.month = dt.month.toString().padLeft(2, '0');
+    sp.day = dt.day.toString().padLeft(2, '0');
+    sp.hour = dt.hour.toString().padLeft(2, '0');
+    sp.minute = dt.minute.toString().padLeft(2, '0');
+    sp.second = dt.second.toString().padLeft(2, '0');
+    sp.milliSecond = dt.millisecond.toString().padLeft(3, '0');
+    sp.microSecond = dt.microsecond.toString().padLeft(6, '0');
 
-    var ls = arr[0].split('-');
-    sp.year = ls[0];
-    sp.month = ls[1];
-    sp.day = ls[2];
+    final tz = dt.timeZoneOffset;
+    final inMinutes = tz.inMinutes;
+    final hour = inMinutes ~/ 60;
+    final minute = inMinutes - hour * 60;
+    sp.timeZone = '${tz.isNegative ? '-' : '+'}${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}';
 
-    arr = arr[1].split('.');
-
-    ls = arr[0].split(':');
-    sp.hour = ls[0];
-    sp.minute = ls[1];
-    sp.second = ls[2];
-
-    sp.microSecond = arr[1];
     return sp;
   }
 

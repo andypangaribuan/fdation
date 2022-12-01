@@ -20,6 +20,18 @@ extension ExtDateTime on DateTime {
   String? toStrDateTime() {
     return fd.convert.dateTime2String(this, format: 'yyyy-MM-dd hh:mm:ss');
   }
+
+  String toRFC3339() {
+    return fd.convert.toRFC3339(this);
+  }
+
+  String toRFC3339MilliSecond() {
+    return fd.convert.toRFC3339MilliSecond(this);
+  }
+
+  String toRFC3339MicroSecond() {
+    return fd.convert.toRFC3339MicroSecond(this);
+  }
 }
 
 extension NExtDateTime on DateTime? {
@@ -33,5 +45,17 @@ extension NExtDateTime on DateTime? {
 
   String? toStrDateTime() {
     return this == null ? null : this!.toStrDateTime();
+  }
+
+  String? safeToRFC3339() {
+    return fd.convert.safeToRFC3339(this);
+  }
+
+  String? safeToRFC3339MilliSecond() {
+    return fd.convert.safeToRFC3339MilliSecond(this);
+  }
+
+  String? safeToRFC3339MicroSecond() {
+    return fd.convert.safeToRFC3339MicroSecond(this);
   }
 }
