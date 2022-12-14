@@ -8,4 +8,10 @@
 
 abstract class FDFunc {
   bool isTypeOf<ThisType, OfType>();
+
+  int getRandomInt({int min = 0, int max = 9, int? count});
+  String getRandomStr({required int count, bool withLowerCase = false, bool withUpperCase = false, bool withNumber = false});
+
+  String generateUniqueId();
+  String generateLongUniqueId();
 }

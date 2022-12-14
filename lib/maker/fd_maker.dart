@@ -10,6 +10,7 @@ library fd_maker;
 
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:fdation/fdation.dart';
 import 'package:fdation/src/fd/fd_convert.dart';
