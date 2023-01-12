@@ -29,7 +29,14 @@ abstract class Net {
 
   Future<NetResponse> get(
     String path, {
-    Map<String, dynamic>? headers,
-    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? header,
+    Map<String, dynamic>? queryParameter,
+  });
+
+  Future<NetResponse> post(
+    String path, {
+    Map<String, dynamic>? header,
+    Map<String, dynamic>? queryParameter,
+    Map<String, dynamic>? body,
   });
 }

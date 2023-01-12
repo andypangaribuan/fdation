@@ -1,6 +1,10 @@
 # CHANGELOG
 All notable changes to this project will be documented in this file.
 
+## 1.0.8
+### Added
+* add method post on net
+
 ## 1.0.7
 ### Added
 * fd.func getRandomInt, getRandomStr, generateUniqueId, and generateLongUniqueId
