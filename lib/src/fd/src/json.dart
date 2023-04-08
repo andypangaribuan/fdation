@@ -64,4 +64,9 @@ class _Json implements FDJson {
 
     return encoded;
   }
+
+  @override
+  dynamic deserialize(String source) {
+    return json.decode(source);
+  }
 }

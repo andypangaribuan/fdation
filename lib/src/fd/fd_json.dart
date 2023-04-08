@@ -11,4 +11,5 @@ import 'package:fdation/src/mix/json_serializable.dart';
 abstract class FDJson {
   dynamic convert(Object? obj, {bool trimDoubleQuotes = false, String? fieldName, FJsonSerializable? jsonSerializable});
   String serialize(Object? obj, {bool trimDoubleQuotes = false});
+  dynamic deserialize(String source);
 }
